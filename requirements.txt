@@ -1,0 +1,6 @@
+youtube-dl
+aiogram
+pydantic
+pydantic-settings
+python-dotenv
+moviepy
