@@ -13,7 +13,7 @@ class CandyDLBot:
            api=TelegramAPIServer.from_base('http://localhost:8081')
         )
         self.bot = Bot(
-            token=settings.BOT_TOKEN,
+            token=settings.TELEGRAM_TOKEN,
             default=DefaultBotProperties(
                 parse_mode=enums.ParseMode.HTML,
                 link_preview_is_disabled=True

@@ -1,12 +1,13 @@
 from __future__ import unicode_literals
 import logging
+import asyncio
 import yt_dlp as youtube_dl
 
 logger = logging.getLogger(__name__)
 
 class DlLogger(object):
     def debug(self, msg):
-        logger.debug(msg)
+        ...
 
     def warning(self, msg):
         logger.warning(msg)
@@ -47,9 +48,13 @@ def download_mp3(url):
         ydl.download([url])
         return ydl.extract_info(url, download=False)
         
-
+async def download_mp3_async(url):
+    return await asyncio.to_thread(download_mp3, url)
 
 def download_mp4(url):
     with youtube_dl.YoutubeDL(ydl_opts_mp4) as ydl:
         ydl.download([url])
         return ydl.extract_info(url, download=False)
+    
+async def download_mp4_async(url):
+    return await asyncio.to_thread(download_mp4, url)

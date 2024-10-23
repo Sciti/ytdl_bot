@@ -5,7 +5,7 @@ from logging import getLogger
 
 
 from candy_dl.bot import keyboards as kb
-from candy_dl.download import download_mp3, download_mp4
+from candy_dl.download import download_mp3_async, download_mp4_async
 
 
 download_router = Router()
@@ -26,7 +26,7 @@ async def start_command(message: types.Message):
 @download_router.message(Command('download'))
 async def download_video_message(message: types.Message, command: CommandObject):
     video_url = command.args
-    data = download_mp4(video_url)
+    data = await download_mp4_async(video_url)
 
     video_id = data.get('id')
     video_title = data.get('title')
@@ -36,8 +36,15 @@ async def download_video_message(message: types.Message, command: CommandObject)
 
 
 @download_router.message(Command('download_mp3'))
-async def download_audio_message(message: types.Message):
-    ...
+async def download_audio_message(message: types.Message, command: CommandObject):
+    audio_url = command.args
+    data = await download_mp3_async(audio_url)
+
+    audio_id = data.get('id')
+    audio_title = data.get('title')
+
+    audio = types.FSInputFile(f'cache/audio/{audio_id}.mp3')
+    await message.answer_audio(audio, caption=audio_title)
 
 
 @download_router.callback_query(F.data == 'download')
