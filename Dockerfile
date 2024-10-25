@@ -10,7 +10,8 @@ RUN apk update && \
         postgresql-dev \
         libffi-dev \
         openssl-dev \
-        git
+        git \
+        ffmpeg
 
 # Copy your bot's source code into the container
 WORKDIR /app
@@ -23,4 +24,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 # EXPOSE 5000
 
 # Default command to run the bot
-CMD ["python3","-m", "candy_dl"]
+CMD ["python3", "-m", "ytdl_bot"]

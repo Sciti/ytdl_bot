@@ -2,8 +2,8 @@ import asyncio
 import sys
 import os
 
-from candy_dl.log import configure_logging
-from candy_dl.bot import CandyDLBot
+from ytdl_bot.log import configure_logging
+from ytdl_bot.bot import CandyDLBot
 
 
 

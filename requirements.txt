@@ -1,4 +1,5 @@
 youtube-dl
+yt_dlp @ https://github.com/yt-dlp/yt-dlp/archive/master.tar.gz
 aiogram
 pydantic
 pydantic-settings

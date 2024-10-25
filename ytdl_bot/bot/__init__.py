@@ -3,14 +3,14 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram.client.telegram import TelegramAPIServer
 from aiogram.client.session.aiohttp import AiohttpSession
 
-from candy_dl.conf import settings
-from candy_dl.bot.handlers import download_router
+from ytdl_bot.conf import settings
+from ytdl_bot.bot.handlers import download_router
 
 
 class CandyDLBot:
     def __init__(self):
         local_server = AiohttpSession(
-           api=TelegramAPIServer.from_base('http://localhost:8081')
+           api=TelegramAPIServer.from_base('http://telegram-bot-api:8081')
         )
         self.bot = Bot(
             token=settings.TELEGRAM_TOKEN,

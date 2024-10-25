@@ -4,8 +4,8 @@ from aiogram.filters import Command, CommandObject
 from logging import getLogger
 
 
-from candy_dl.bot import keyboards as kb
-from candy_dl.download import download_mp3_async, download_mp4_async
+from ytdl_bot.bot import keyboards as kb
+from ytdl_bot.download import download_mp3_async, download_mp4_async
 
 
 download_router = Router()
